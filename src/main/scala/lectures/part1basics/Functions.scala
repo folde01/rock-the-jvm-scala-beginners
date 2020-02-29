@@ -1,5 +1,7 @@
 package lectures.part1basics
 
+import scala.annotation.tailrec
+
 object Functions extends App {
 
   def aFunc(a: String, b: Int) = {
@@ -72,4 +74,24 @@ object Functions extends App {
 
   for (n <- 1 to 20)
     println("isPrime(" + n + "): " + isPrime(n))
+
+
+  // exercises - all with tail recursion:
+
+  // 1. string concat
+  def stringConcat(s: String, n: Int): String = {
+    if (n == 1) s
+    else s + stringConcat(s, n-1)
+  }
+  println(stringConcat("a", 4))
+
+  def stringConcatTail(s: String, n: Int): String = {
+    @tailrec
+    def loop(s: String, n: Int, acc: String): String = {
+      if (n == 1) acc + s
+      else loop(s, n - 1, acc + s)
+    }
+    loop(s, n, "")
+  }
+  println(stringConcatTail("a", 10))
 }
