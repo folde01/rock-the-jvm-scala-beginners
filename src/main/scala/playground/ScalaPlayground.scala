@@ -11,5 +11,17 @@ object ScalaPlayground extends App {
     helper(ds, 0, 0)
   }
 
-  println(recursiveSum(Seq(1,2)))
+  def factorial(n: Int): Int = {
+    def go(m: Int, product: Int): Int = {
+      if (m == 0 || m == 1) product
+      else go(m - 1, product * m)
+    }
+    go(n, 1)
+  }
+
+
+  println(factorial(0))
+  println(factorial(1))
+  println(factorial(2))
+  println(factorial(3))
 }
