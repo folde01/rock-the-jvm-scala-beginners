@@ -94,4 +94,41 @@ object Functions extends App {
     loop(s, n, "")
   }
   println(stringConcatTail("a", 10))
+
+  // 2. isPrime
+
+  def isPrimeTail(n: Int): Boolean = {
+    @tailrec
+    def isPrimeUntil(n: Int, limit: Int): Boolean = {
+      if (n == 1) false
+      else if (limit == 1) true
+      else n % limit != 0 && isPrimeUntil(n, limit - 1)
+    }
+    isPrimeUntil(n, n/2)
+  }
+
+  for (n <- 1 to 20)
+    println(n + ": " + isPrimeTail(n))
+
+  // 3. fib
+
+  def fib(n: Int): Int = {
+    if (n < 2) n
+    else fib(n - 1) + fib(n - 2)
+  }
+  for (n <- 1 to 5)
+    println(n + ": " + fib(n))
+
+  def fibTail(n: Int): Int = {
+    def loop(n: Int, acc: Int): Int = {
+      if (n < 2) n
+      else loop(n - 1, acc) + loop(n - 2, acc)
+    }
+    loop(n, 0)
+  }
+
+  for (n <- 1 to 5)
+    println(n + ": " + fib(n))
+
+
 }

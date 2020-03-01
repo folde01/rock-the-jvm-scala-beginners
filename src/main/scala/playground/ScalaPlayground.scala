@@ -24,4 +24,5 @@ object ScalaPlayground extends App {
   println(factorial(1))
   println(factorial(2))
   println(factorial(3))
+  println(1.toFloat/2)
 }
